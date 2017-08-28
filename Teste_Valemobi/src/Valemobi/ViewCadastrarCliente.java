@@ -46,7 +46,7 @@ public class ViewCadastrarCliente extends JFrame{
 		            public void actionPerformed( ActionEvent event )
 		            {
 		            	
-		            	if(tfid.getText().equals("") || tfnome.getText().equals(" ") || tfcpf.getText().equals(" ") || tftotal.getText().equals(" ")){
+		            	if(tfid.getText().equals("")|| tfnome.getText().equals(" ") || tfcpf.getText().equals(" ") || tftotal.getText().equals(" ")){
 		            		
 		            		JOptionPane.showMessageDialog(null, "Preencha todos os dados");
 		            	}

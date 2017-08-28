@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -31,11 +32,13 @@ public class ViewConsultarCliente extends JDialog{
 	private AcessoBD bd;
 	private Connection conn = null;
 	private ArrayList<Cliente> listaCliente;
+	private DecimalFormat de;
 	
 	public ViewConsultarCliente()
 	{
 		super();
 		setTitle("Consultar Cliente");
+		de = new DecimalFormat("0.00");
 		
 	}
 	
@@ -110,7 +113,7 @@ public class ViewConsultarCliente extends JDialog{
 			                        	}
 			                        	else listaclienteMatrix [x][3] = "Inativo";
 			                        	
-			                        	listaclienteMatrix [x][4] = ""+ listaCliente.get(x).getValortotal();
+			                        	listaclienteMatrix [x][4] = ""+ de.format(listaCliente.get(x).getValortotal());
 			                        	
 			                            total = total + listaCliente.get(x).getValortotal();
 			                            
@@ -122,7 +125,7 @@ public class ViewConsultarCliente extends JDialog{
 			                      
 			                		total = total/listaCliente.size();
 			                        
-			                        lresultado.setText(""+total);
+			                        lresultado.setText(""+de.format(total));
 			                        
 			                        
 			                		tabela = new JTable(listaclienteMatrix,coluna);
@@ -143,8 +146,11 @@ public class ViewConsultarCliente extends JDialog{
 			                		panel7.add(panel5, BorderLayout.CENTER);
 			                		panel7.revalidate();
 			                		panel7.repaint();
+			                		
+			                		bconsultar1.setEnabled(false);
 			                        
-			                		JOptionPane.showMessageDialog(null, "Busca realizada com sucesso encontramos, "+listaCliente.size()+" Resultados para sua Busca:" );
+			                		JOptionPane.showMessageDialog(null, "Busca realizada com sucesso encontramos: "+listaCliente.size()+", Resultados para sua Busca:" );
+			                		
 			                		
 			                		
 			                        
